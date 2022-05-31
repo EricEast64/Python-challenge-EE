@@ -26,27 +26,28 @@ with open(csv_path, 'r') as election_csv:
         if candidate not in uniquecandidates:
             uniquecandidates.append(candidate)
 
-    Khan_votes = []
-    Correy_votes = []
-    Li_votes = []
-    OTooley_votes = []
+    Khan_votes = 0
+    Correy_votes = 0
+    Li_votes = 0
+    OTooley_votes = 0
 
     for row in csv_reader:
-        if row[2] == "Khan":
-            Khan_votes.append(row[0])
-        if row[2] == 'Correy':
-            Correy_votes.append(row[0])
-        if row[2] == 'Li':
-            Li_votes.append(row[0])
-        if row[2] == "O'Tooley":
-            OTooley_votes.append(row[0])
+        if row[2] is 'Khan':
+            Khan_votes += 1
+        if row[2] is 'Correy':
+            Correy_votes += 1
+        if row[2] is 'Li':
+            Li_votes += 1
+        if row[2] is "O'Tooley":
+            OTooley_votes += 1
 
-    Khan_share = (len(Khan_votes) / total_votes) * 100
-    Correy_share = (len(Correy_votes) / total_votes) * 100
-    Li_share = (len(Li_votes) / total_votes) * 100
-    OTooley_share = (len(OTooley_votes) / total_votes) * 100
+    Khan_share = (Khan_votes / total_votes) * 100
+    Correy_share = (Correy_votes / total_votes) * 100
+    Li_share = (Li_votes / total_votes) * 100
+    OTooley_share = (OTooley_votes / total_votes) * 100
 
-
+    print(Khan_votes)
+    
     print(f"Total Votes: {total_votes}")
     print(f"Unique Candidates: {uniquecandidates}")
     print(f"Khan: {Khan_share}%")
